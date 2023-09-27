@@ -10,6 +10,7 @@ const jobs = require("./models/jobs");
 const testRoutes = require("./routes/testRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const jobRoutes = require("./routes/jobsRoutes");
 
 const app = express();
 app.use(cookieParser());
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/job", jobRoutes);
 
 /////////// Create User ///////////
 

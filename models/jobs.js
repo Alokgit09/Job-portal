@@ -22,13 +22,25 @@ const jobsSchema = new mongoose.Schema({
       }
     },
   },
+  status: {
+    type: String,
+    require: true,
+    enum: ['pending', 'reject', 'interview'],
+    default: 'pending'
+  },
+  worktype: {
+    type: String,
+    enum: ['full-time', 'part-time', 'internship', 'contaract'],
+    default: 'full-time'
+  },
   education: {
     type: String,
     require: true,
   },
-  city: {
+  workLocation: {
     type: String,
     require: true,
+    default: 'Indore'
   },
   job_title: {
     type: String,
@@ -42,7 +54,9 @@ const jobsSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-});
+},
+{timestamps:true,}
+);
 
 const allJobsSchema = new mongoose.model("Alljobs", jobsSchema);
 

@@ -13,6 +13,7 @@ const registerController = async (req, res) => {
     if (!uniqueEmail) {
       await ragisterInfo.generateAuthToken();
       res.status(201).json(ragisterInfo);
+      await ragisterInfo.save();
       console.log("ragisterInfo", ragisterInfo);
     } else {
       res.status(500).json({ message: "This E-mail Already Used" });
@@ -56,5 +57,8 @@ const loginController = async (req, res) => {
     res.send({ message: "Invalid login Details" });
   }
 };
+
+
+
 
 module.exports = { registerController, loginController };
